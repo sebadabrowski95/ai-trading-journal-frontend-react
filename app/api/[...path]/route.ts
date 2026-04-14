@@ -28,7 +28,7 @@ async function forwardRequest(request: NextRequest, context: RouteContext) {
     const body =
       request.method === "GET" || request.method === "HEAD"
         ? undefined
-        : await request.text();
+        : await request.arrayBuffer();
 
     const response = await fetch(targetUrl, {
       method: request.method,
@@ -38,10 +38,9 @@ async function forwardRequest(request: NextRequest, context: RouteContext) {
       redirect: "manual",
     });
 
-    const responseText = await response.text();
     const responseContentType = response.headers.get("content-type");
 
-    return new NextResponse(responseText, {
+    return new NextResponse(response.body, {
       status: response.status,
       headers: responseContentType
         ? { "content-type": responseContentType }

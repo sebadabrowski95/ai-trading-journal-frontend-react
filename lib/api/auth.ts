@@ -10,9 +10,6 @@ export type MessageResponse = {
   message: string;
 };
 
-export type ActivateRequest = {
-  token: string;
-};
 
 export type LoginRequest = {
   email: string;
@@ -73,8 +70,10 @@ export function confirmPasswordReset(payload: PasswordResetConfirmRequest) {
   });
 }
 
-export function getCurrentUser(accessToken: string) {
+function getCurrentUser(accessToken: string | null) {
   return apiRequest<CurrentUserResponse>(AUTH_ENDPOINTS.me, {
-    accessToken,
+    body: accessToken,
   });
 }
+
+export default getCurrentUser

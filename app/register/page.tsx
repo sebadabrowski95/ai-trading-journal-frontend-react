@@ -19,7 +19,7 @@ export default function RegisterPage() {
 
   useEffect(() => {
     if (isLoggedIn()) {
-      router.replace("/me");
+      router.replace("/trading-jurnal");
     }
   }, [router]);
 

@@ -25,7 +25,7 @@ export function ResetPasswordForm({ token }: ResetPasswordFormProps) {
 
   useEffect(() => {
     if (isLoggedIn()) {
-      router.replace("/me");
+      router.replace("/trading-jurnal");
     }
   }, [router]);
 

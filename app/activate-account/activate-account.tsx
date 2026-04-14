@@ -27,7 +27,7 @@ export function ActivateAccount({ token }: ActivateContentProps) {
 
   useEffect(() => {
     if (isLoggedIn()) {
-      router.replace("/me");
+      router.replace("/trading-jurnal");
       return;
     }
 

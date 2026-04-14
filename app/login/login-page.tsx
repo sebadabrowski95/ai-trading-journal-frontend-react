@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { setAccessToken } from "@/lib/auth/storage";
+import { setAccessToken, setUserEmail } from "@/lib/auth/storage";
 import { login } from "@/lib/api/auth";
 import { ApiError } from "@/lib/api/client";
 import { AuthLayout } from "./auth-layout";
@@ -25,7 +25,8 @@ export function LoginPage() {
     try {
       const response = await login({ email, password });
       setAccessToken(response.accessToken);
-      router.push("/me");
+      setUserEmail(email);
+      router.push("/trading-jurnal");
     } catch (error) {
       if (error instanceof ApiError) {
         setErrorMessage(error.message);

@@ -16,7 +16,7 @@ export function ForgotPasswordForm() {
 
   useEffect(() => {
     if (isLoggedIn()) {
-      router.replace("/me");
+      router.replace("/trading-jurnal");
     }
   }, [router]);
 

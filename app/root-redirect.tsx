@@ -9,7 +9,7 @@ export function RootRedirect() {
 
   useEffect(() => {
     if (isLoggedIn()) {
-      router.replace("/me");
+      router.replace("/trading-jurnal");
     } else {
       router.replace("/login");
     }

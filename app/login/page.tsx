@@ -36,7 +36,7 @@ export default function LoginRoutePage() {
 
   useEffect(() => {
     if (loggedIn) {
-      router.replace("/me");
+      router.replace("/trading-jurnal");
     }
   }, [loggedIn, router]);
 
