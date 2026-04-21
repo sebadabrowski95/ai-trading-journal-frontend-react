@@ -88,7 +88,7 @@ const EMPTY_TRANSACTION_FORM: TransactionFormState = {
 };
 
 function formatMoney(value: number) {
-  const sign = value > 0 ? "+" : "";
+  const sign = value > 0 ? "+" : value == 0 ? "" : "-";
   const formatted = new Intl.NumberFormat("pl-PL", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
