@@ -65,7 +65,7 @@ Open `http://localhost:3000`.
 - filters charts by selected symbols
 - renders a cumulative profit/loss line chart based on transaction close times
 - renders BUY, SELL, and OVERALL win-rate pie charts based on the currently selected symbols
-<img width="1160" height="664" alt="Image" src="https://github.com/user-attachments/assets/062c0dd0-8e8f-4374-844b-3e271ba4d718" />
+  <img width="1160" height="664" alt="Image" src="https://github.com/user-attachments/assets/062c0dd0-8e8f-4374-844b-3e271ba4d718" />
 
 ### AI Agent
 
