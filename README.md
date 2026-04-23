@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**# AI Trading Journal Frontend
+
+Frontend application for the AI Trading Journal platform, built with Next.js, React, TypeScript, and Tailwind CSS.
+
+The app includes:
+- authentication flows: login, register, account activation, forgot password, reset password
+- a trading journal view for browsing, importing, creating, editing, and deleting transactions
+- a dashboard view with cumulative P/L charts, symbol filtering, and win-rate pie charts
+- an AI assistant page
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+
+## Requirements
+
+- Node.js 20+ recommended
+- Backend API: <a href="https://github.com/sebadabrowski95/ai-trading-journal">AI Trading Journal</a>
+
+## Environment Variables
+
+
+```env
+API_SERVER_BASE_URL=http://localhost:8080
+```
+
+Notes:
+- `API_SERVER_BASE_URL` is used by the Next.js proxy route to forward requests to the backend server.
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Main Features
 
-## Learn More
+### Trading Journal
 
-To learn more about Next.js, take a look at the following resources:
+- monthly calendar overview
+- day details modal
+- manual transaction create/edit/delete
+- Excel transaction import
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<img width="1160" height="1140" alt="Image" src="https://github.com/user-attachments/assets/121090ae-1900-4bd1-996a-5e90df37319d" />
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Dashboard
 
-## Deploy on Vercel
+- fetches chart data from `POST /api/dashboard/charts`
+- filters transactions by date range
+- filters charts by selected symbols
+- renders a cumulative profit/loss line chart based on transaction close times
+- renders BUY, SELL, and OVERALL win-rate pie charts based on the currently selected symbols
+  <img width="1160" height="664" alt="Image" src="https://github.com/user-attachments/assets/062c0dd0-8e8f-4374-844b-3e271ba4d718" />
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### AI Agent
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-fetches AI responses from POST /api/ai/chat
+
+<img width="1160" height="906" alt="Image" src="https://github.com/user-attachments/assets/dbadfcb5-9be2-4830-b838-bd2841f82140" />
+
+
+## Authentication
+
+Authentication state is stored in `localStorage`.
+
+Relevant keys:
+- `accessToken`
+- `userEmail`
+
+If the API returns `401`, the app clears the stored token and redirects the user to `/login`.
+
